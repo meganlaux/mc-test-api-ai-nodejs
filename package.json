@@ -11,5 +11,9 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.15.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/meganlaux/mc-test-api-ai-nodejs"
   }
 }

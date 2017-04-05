@@ -4,6 +4,8 @@ const bodyParser = require('body-parser')
 // Create a new instance of express
 const app = express()
 
+app.set('port', (process.env.PORT || 5000));
+
 // Tell express to use the body-parser middleware and to not parse extended bodies
 app.use(bodyParser.urlencoded({extended:false}))
 
@@ -17,10 +19,9 @@ app.post('/webhook', function(req, res) {
   console.log("You sent " + body + " to Express")
 })
 
-// Tell our app to listen on port 5000
-app.listen(5000, function(err) {
+app.listen(app.get('port'), function(err) {
   if (err) {
     throw err
   }
-  console.log('Example app listening on port 5000')
+  console.log('Node app is running on port', app.get('port'));
 })
