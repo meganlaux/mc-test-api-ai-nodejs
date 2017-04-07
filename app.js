@@ -1,11 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 
-// Create a new instance of express
 const app = express()
-
 app.set('port', (process.env.PORT || 5000));
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -16,10 +13,13 @@ app.get('/', function(req, res) {
 // Route that receives a POST request to /webhook
 app.post('/webhook', function(req, res) {
   const body = req.body
+
   console.log("Request body: " + body)
   console.log("Resolved Query: " + body.result.resolvedQuery)
   console.log("Action: " + body.result.action)
+
   const webhookResponse = buildWebhookResponse(body)
+
   res.set('Content-Type', 'application/json');
   return res.send(webhookResponse)
 })
