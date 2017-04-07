@@ -23,7 +23,7 @@ app.post('/webhook', function(req, res) {
   res.send(webhookResponse)
 })
 
-buildWebhookResponse() {
+function buildWebhookResponse() {
   const speech = "Megans webhook response"
   return {
       "speech": speech,
