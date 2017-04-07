@@ -17,7 +17,22 @@ app.get('/', function(req, res) {
 app.post('/webhook', function(req, res) {
   const body = req.body.Body
   console.log("You sent " + body + " to Express")
+
+  const webhookResponse = buildWebhookResponse()
+  res.set('Content-Type', 'application/json');
+  res.send(webhookResponse)
 })
+
+buildWebhookResponse() {
+  const speech = "Megans webhook response"
+  return {
+      "speech": speech,
+      "displayText": speech,
+      // "data": data,
+      // "contextOut": [],
+      "source": "mc-test-api-ai-nodejs"
+    }
+}
 
 app.listen(app.get('port'), function(err) {
   if (err) {
