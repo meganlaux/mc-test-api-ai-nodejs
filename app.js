@@ -15,11 +15,11 @@ app.get('/', function(req, res) {
 
 // Route that receives a POST request to /webhook
 app.post('/webhook', function(req, res) {
+  res.set('Content-Type', 'application/json');
   console.log("Request body: " + req.body)
   const body = res.json(req.body)
   console.log("Request body JSON: " + body)
   const webhookResponse = buildWebhookResponse()
-  //res.set('Content-Type', 'application/json');
   res.send(webhookResponse)
 })
 
