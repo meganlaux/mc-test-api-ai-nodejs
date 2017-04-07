@@ -19,13 +19,21 @@ app.post('/webhook', function(req, res) {
   console.log("Request body: " + body)
   console.log("Resolved Query: " + body.result.resolvedQuery)
   console.log("Action: " + body.result.action)
-  const webhookResponse = buildWebhookResponse()
+  const webhookResponse = buildWebhookResponse(body)
   res.set('Content-Type', 'application/json');
   return res.send(webhookResponse)
 })
 
-function buildWebhookResponse() {
-  const speech = "Megans webhook response"
+function buildWebhookResponse(body) {
+  const action = body.result.action
+  var speech
+  switch(action) {
+    case 'webhook.test':
+      speech = "Megans webhook.test response"
+      break
+    default:
+      speech = "Megans default response"
+  }
   return {
       "speech": speech,
       "displayText": speech,
