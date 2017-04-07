@@ -26,7 +26,6 @@ app.post('/webhook', function(req, res) {
 
 function buildWebhookResponse(body) {
   const action = body.result.action
-  var speech
   switch(action) {
     case 'webhook.test':
       speech = "Megans webhook.test response"
