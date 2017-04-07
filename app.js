@@ -6,7 +6,7 @@ const app = express()
 
 app.set('port', (process.env.PORT || 5000));
 
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.get('/', function(req, res) {
@@ -16,9 +16,9 @@ app.get('/', function(req, res) {
 // Route that receives a POST request to /webhook
 app.post('/webhook', function(req, res) {
   res.set('Content-Type', 'application/json');
-  console.log("Request body: " + req.body)
-  const body = res.json(req.body)
-  console.log("Request body JSON: " + body)
+  //console.log("Request body: " + req.body)
+  //const body = res.json(req.body)
+  //console.log("Request body JSON: " + body)
   const webhookResponse = buildWebhookResponse()
   res.send(webhookResponse)
 })
