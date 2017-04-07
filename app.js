@@ -6,8 +6,8 @@ const app = express()
 
 app.set('port', (process.env.PORT || 5000));
 
-// Tell express to use the body-parser middleware and to not parse extended bodies
-app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.get('/', function(req, res) {
   res.send('Hello World!')
@@ -15,9 +15,9 @@ app.get('/', function(req, res) {
 
 // Route that receives a POST request to /webhook
 app.post('/webhook', function(req, res) {
-  const body = req.body.Body
-  console.log("You sent " + body + " to Express")
-
+  console.log("Request body: " + req.body)
+  const body = res.json(req.body)
+  console.log("Request body JSON: " + body)
   const webhookResponse = buildWebhookResponse()
   res.set('Content-Type', 'application/json');
   res.send(webhookResponse)
