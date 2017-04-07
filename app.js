@@ -15,10 +15,10 @@ app.get('/', function(req, res) {
 
 // Route that receives a POST request to /webhook
 app.post('/webhook', function(req, res) {
-
-  console.log("Request body: " + req.body)
-  //const body = res.json(req.body)
-  //console.log("Request body JSON: " + body)
+  const body = req.body
+  console.log("Request body: " + body)
+  console.log("Resolved Query: " + body.result.resolvedQuery)
+  console.log("Action: " + body.result.action)
   const webhookResponse = buildWebhookResponse()
   res.set('Content-Type', 'application/json');
   return res.send(webhookResponse)
