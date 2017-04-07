@@ -21,7 +21,7 @@ app.post('/webhook', function(req, res) {
   //console.log("Request body JSON: " + body)
   const webhookResponse = buildWebhookResponse()
   res.set('Content-Type', 'application/json');
-  res.send(webhookResponse)
+  return res.send(webhookResponse)
 })
 
 function buildWebhookResponse() {
